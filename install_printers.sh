@@ -1,8 +1,22 @@
 BASE_URL=http://printhost.idi.ntnu.no:631/printers/
 
-# Drivers
-FOOMATIC=foomatic-db-compressed-ppds:0/ppd/foomatic-ppd/Generic-PostScript_Printer-Postscript.ppd
-RICOH=openprinting-ppds:0/ppd/openprinting/Ricoh/PXL/Ricoh-AficioSG3110DNw_PXL.ppd
+echo "Finding appropriate drivers"
+
+FOOMATIC_DRIVERS=$(lpinfo --make-and-model 'Generic PostScript Printer' -m)
+if echo "$FOOMATIC_DRIVERS" | grep -q 'recommended' ; then
+    FOOMATIC=$(echo "$FOOMATIC_DRIVERS" | grep 'recommended' | head -1 | awk '{ print $1 }')
+else
+    FOOMATIC=$(echo "$FOOMATIC_DRIVERS" | head -1 | awk '{ print $1 }')
+fi
+
+RICOH_DRIVERS=$(lpinfo --make-and-model 'RICOH AficioSG3110DNw PXL' -m)
+if echo "$RICOH_DRIVERS" | grep -q 'recommended' ; then
+    RICOH=$(echo "$RICOH_DRIVERS" | grep 'recommended' | head -1 | awk '{ print $1 }')
+else
+    RICOH=$(echo "$RICOH_DRIVERS" | head -1 | awk '{ print $1 }')
+fi
+
+echo "Installing printers"
 
 lpadmin -p its008 -v "$BASE_URL"its008 -m $FOOMATIC -D "its008" -L "its008" -E
 lpadmin -p its119 -v "$BASE_URL"its119 -m $FOOMATIC -D "its119" -L "Drivhuset (ITS-119)" -E
