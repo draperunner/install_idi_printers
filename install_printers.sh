@@ -34,3 +34,5 @@ lpadmin -p itv360b -v "$BASE_URL"itv360b -m $FOOMATIC -D "itv360b, laserskriver,
 lpadmin -p itv443b -v "$BASE_URL"itv443b -m $FOOMATIC -D "itv443b, laserskriver, it vest" -L "it vest, 4. etg, rom 443b" -E
 lpadmin -p itv443bfarge -v "$BASE_URL"itv443bfarge -m $FOOMATIC -D "itv443bfarge, fargeskriver, it vest" -L "it vest, 4. etg, rom 443b" -E
 lpadmin -p itv462 -v "$BASE_URL"itv462 -m $FOOMATIC -D "itv462, laserskriver, it vest" -L "it vest, 4. etg, rom 462" -E
+
+echo "Done. Start printing!"
