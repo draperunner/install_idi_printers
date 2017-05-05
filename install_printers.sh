@@ -17,3 +17,4 @@ lpadmin -p IT-bygget $DEFAULT_OPTIONS -v "$BASE_URL"ntnuprint-ricoh -m $DRIVER -
 lpadmin -p P15 $DEFAULT_OPTIONS -v "$BASE_URL"ntnu-datasal-hp -m $DRIVER -D "P15" -L "Skrivere på P15 (ntnu-datasal-hp)" -E
 
 echo "Done. Start printing!"
+echo "PS! When printing your first page, the print job will need to be authenticated. Use your NTNU login."
