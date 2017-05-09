@@ -1,4 +1,18 @@
+#!/usr/bin/env bash
 BASE_URL=smb://WIN-NTNU-NO/followprint.win.ntnu.no/
+
+# Dependencies
+echo "Checking dependencies..."
+
+if [ "$(uname)" == "Linux" ]; then
+    if [ $(which smbclient) ] ; then
+      echo "Dependency 'smbclient' already installed"
+    else
+      echo "Needs sudo access to install dependency 'smbclient'"
+      sudo apt-get install -y smbclient
+    fi
+fi
+echo "Dependencies installed"
 
 echo "Finding appropriate driver"
 
