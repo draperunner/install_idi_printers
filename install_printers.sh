@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 BASE_URL=smb://WIN-NTNU-NO/followprint.win.ntnu.no/
 
+set -e
+
 # Dependencies
 echo "Checking dependencies..."
 
